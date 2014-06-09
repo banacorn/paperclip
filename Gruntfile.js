@@ -17,25 +17,10 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
-  grunt.loadNpmTasks('grunt-recess');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
 
-    recess: {
-      options: {
-          compile: true
-      },
-      dist: {
-          files: [{
-              expand: true,
-              cwd: '<%= yeoman.app %>/styles',
-              src: '{,*/}*.less',
-              dest: '.tmp/styles/',
-              ext: '.css'
-          }]
-      }
-    },
     // Project settings
     yeoman: {
       // configurable paths
@@ -66,7 +51,7 @@ module.exports = function (grunt) {
       },
       less: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
-        tasks: ['newer:copy:styles', 'recess']
+        tasks: ['less']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -360,9 +345,31 @@ module.exports = function (grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
+    },
+
+    // less
+    less: {
+      development: {
+        options: {
+          paths: ['<%= yeoman.app %>/styles/{,*/}*.css']
+        },
+        files: {
+          '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/main.less'
+        }
+      },
+      production: {
+        options: {
+          paths: ['<%= yeoman.app %>/styles/{,*/}*.css'],
+          cleancss: true
+        },
+        files: {
+          '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/main.less'
+        }
+      }
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-less');
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
@@ -395,7 +402,6 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'bowerInstall',
-    'recess',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
