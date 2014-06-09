@@ -9,15 +9,33 @@
 
 module.exports = function (grunt) {
 
+
+
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  grunt.loadNpmTasks('grunt-recess');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
+    recess: {
+      options: {
+          compile: true
+      },
+      dist: {
+          files: [{
+              expand: true,
+              cwd: '<%= yeoman.app %>/styles',
+              src: '{,*/}*.less',
+              dest: '.tmp/styles/',
+              ext: '.css'
+          }]
+      }
+    },
     // Project settings
     yeoman: {
       // configurable paths
@@ -45,6 +63,10 @@ module.exports = function (grunt) {
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
+      },
+      less: {
+        files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
+        tasks: ['newer:copy:styles', 'recess']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -373,6 +395,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'bowerInstall',
+    'recess',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
