@@ -1,1 +1,10 @@
-<p>fuck <i class="fa fa-bolt"></i></p>
+<h1>todo</h1>
+<div ng-controller="MainCtrl">
+    <form ng-submit="addTodo()">
+        <input type="text" ng-model="todoText" size="30" placeholder"type here">
+        <input type="submit" value="add">
+    </form>
+    <ol>
+        <li ng-repeat="item in items">{{item}}</li>
+    </ol>
+</div>
