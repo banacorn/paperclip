@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name paperclipApp.controller:MainCtrl
+ * @name paperclipApp.controller:AboutCtrl
  * @description
- * # MainCtrl
+ * # AboutCtrl
  * Controller of the paperclipApp
  */
 angular.module('paperclipApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
