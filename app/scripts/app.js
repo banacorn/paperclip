@@ -1,21 +1,10 @@
 'use strict';
 
 angular
-    .module('paperclipApp', [
-        'ngResource',
-        'ngRoute'
-    ])
-    .config(function($routeProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
-            })
-            .when('/about', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl'
-            })
-            .otherwise({
-                redirectTo: '/'
-            });
+    .module('paperclipApp', ['btford.socket-io'])
+    .factory('socket', function(socketFactory) {
+        return socketFactory();
+    })
+    .controller('fooController', function(socket) {
+
     });
