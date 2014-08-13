@@ -3,8 +3,13 @@
 angular
     .module('paperclipApp', ['btford.socket-io'])
     .factory('socket', function(socketFactory) {
-        return socketFactory();
+        return socketFactory({
+            ioSocket: window.io.connect('http://localhost:3000')
+        });
     })
-    .controller('fooController', function(socket) {
+    .controller('socketController', function(socket) {
+        socket.on('connect', function() {
+            console.log('connected!!');
+        });
 
     });
