@@ -1,1 +1,24 @@
 @import "../../bower_components/font-awesome/less/font-awesome.less";
+@import "reset.less";
+
+@font-face {
+  font-family: 'Asap';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Asap'), local('Asap-Regular'), url('../fonts/asap-regular.woff2') format('woff');
+}
+
+* {
+    font-family: 'Asap';
+}
+
+body {
+    min-width: 600px;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+h1 {
+    color: #aaa;
+    font-size: 200%;
+}
