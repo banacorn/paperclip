@@ -16,8 +16,22 @@ function Socket(socketFactory) {
 }
 
 angular
-    .module('paperclipApp', ['btford.socket-io'])
+    .module('paperclipApp', ['btford.socket-io', 'ngRoute'])
+    .config(function($routeProvider, $locationProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/main.html',
+                controller: 'TestCtrl',
+                controllerAs: 'test'
+            })
+            .when('/banana', {
+                templateUrl: 'views/about.html',
+                controller: 'TestCtrl',
+                controllerAs: 'test'
+            });
+        $locationProvider.html5Mode(true);
+    })
     .service('socket', ['socketFactory', Socket])
-    .controller('testController', function(socket) {
+    .controller('TestCtrl', function(socket) {
         this.connect = socket.connect;
     });
