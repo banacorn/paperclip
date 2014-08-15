@@ -8,6 +8,8 @@
 }
 
 @base: #444;
+@success: #5a5;
+@fail: #a55;
 
 * {
     font-family: 'Asap';
@@ -18,6 +20,10 @@ body {
     max-width: 1000px;
     margin: 40px auto;
     color: @base;
+}
+
+header {
+    margin-bottom: 40px;
 }
 
 h1 {
@@ -41,7 +47,7 @@ button {
         outline: 0;
     }
     &:hover {
-        color: #5aa;
+        color: #48c;
     }
 }
 
@@ -62,16 +68,18 @@ button {
         }
 
         .sign {
-            width: 50px;
+            width: 60px;
+            text-align: center;
+
         }
 
         .content {
-            width: 750px;
+            width: 900px;
         }
 
         .buttons {
             visibility: hidden;
-            width: 200px;
+            width: 40px;
             text-align: right;
         }
 
@@ -86,11 +94,21 @@ button {
 }
 
 .success {
-    color: #5a5;
+    .sign {
+        color: @success;
+    }
+    .caption {
+        color: @success;
+    }
 }
 
 .fail {
-    color: #a55;
+    .sign {
+        color: @fail;
+    }
+    .caption {
+        color: @fail;
+    }
 }
 
 .detail {

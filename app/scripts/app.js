@@ -14,15 +14,21 @@ function SocketConnector(socketFactory) {
             });
         }
     };
-
-    // this.fromServer = function () {
-    //     if (socket !== null) {
-    //         socket.on()
-    //     } else {
-    //         throw 'socket not connected';
-    //     }
-    // }
 }
+
+var cases = {
+    // connection: {
+    //     status: 'untested',
+    //     name: 'Connect',
+    //     description: 'connect with socket.io server'
+    // },
+    pingPong: {
+        status: 'untested',
+        name: 'Ping Pong',
+        description: 'send and then recieve an event without data'
+    }
+};
+
 
 angular
     .module('paperclipApp', ['btford.socket-io', 'ngRoute'])
@@ -40,41 +46,31 @@ angular
             });
         $locationProvider.html5Mode(true);
     })
-    .service('socketConnector', ['socketFactory', SocketConnector])
-    .controller('TestCtrl', function(socketConnector) {
+    .service('haskellSocket', ['socketFactory', SocketConnector])
+    .controller('TestCtrl', function(haskellSocket) {
 
         var socket;
+        var that = this;
 
-        var cases = this.cases = {
-            connection: {
-                status: 'untested',
-                name: 'Connect',
-                description: 'connect with socket.io server'
-            },
-            pingPong: {
-                status: 'untested',
-                name: 'Ping Pong',
-                description: 'send and then recieve an event without data'
-            }
+        this.cases = cases;
+
+        this.pass = function(testName) {
+            that.cases[testName] = 'passed';
         };
 
-        var pass = this.pass = function(testName) {
-            cases[testName] = 'passed';
-        };
-
-        var fail = this.fail = function(testName) {
-            cases[testName] = 'failed';
+        this.fail = function(testName) {
+            that.cases[testName] = 'failed';
         };
 
         this.connect = function() {
 
             // connection
-            socket = socketConnector.connect(this);
-            pass('connection');
+            socket = haskellSocket.connect(this);
+            that.pass('connection');
 
             // pingPong
             socket.on('pong', function() {
-                pass('pingPong');
+                that.pass('pingPong');
             });
         };
 
