@@ -29,7 +29,6 @@ var cases = {
     }
 };
 
-
 angular
     .module('paperclipApp', ['btford.socket-io', 'ngRoute'])
     .config(function($routeProvider, $locationProvider) {
@@ -80,5 +79,13 @@ angular
             } else {
                 throw 'socket not connected';
             }
+        };
+    })
+    .directive('connector', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'views/connector.html',
+            controller: 'ConnectorCtrl',
+            controllerAs: 'connector'
         };
     });

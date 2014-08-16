@@ -1,4 +1,5 @@
-@import "../../bower_components/normalize-less/normalize.less";
+@import "../../bower_components/normalize-less/normalize";
+@import "colour";
 
 @font-face {
   font-family: 'Asap';
@@ -7,111 +8,64 @@
   src: local('Asap'), local('Asap-Regular'), url('../fonts/asap-regular.woff2') format('woff');
 }
 
-@base: #444;
-@success: #5a5;
-@fail: #a55;
-
 * {
     font-family: 'Asap';
 }
 
-body {
-    min-width: 600px;
-    max-width: 1000px;
-    margin: 40px auto;
-    color: @base;
-}
+@haskellDark: @belizehole;
+@haskellLight: @peterriver;
+@nodeDark: #408040;
+@nodeLight: lighten(@nodeDark, 10%);
 
-header {
-    margin-bottom: 40px;
+body {
+    background: @basalt;
+    padding: 30px;
 }
 
 h1 {
-    font-size: 200%;
-    color: #aaa;
-    padding-left: 50px;
+    color: white;
+    text-align: center;
+    margin-bottom: 60px;
 }
 
-hr {
-    border: 2px solid lighten(@base, 20%);
-}
-
-button {
-    color: #aaa;
-    background: none;
-    border: none;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin: 0;        
-    &:focus {
-        outline: 0;
-    }
-    &:hover {
-        color: #48c;
-    }
-}
-
-#cases {
-    
-    list-style-type: none; 
-    padding: 0;
-
-    li {
-        height: 80px;
-        line-height: 80px;
-        font-size: 150%;
-
-        div {
-            height: 80px;
-            line-height: 80px;
-            display: inline-block;
-        }
-
-        .sign {
-            width: 60px;
-            text-align: center;
-
-        }
-
-        .content {
-            width: 900px;
-        }
-
-        .buttons {
-            visibility: hidden;
-            width: 40px;
-            text-align: right;
-        }
-
-    }
-
-    li:hover {
-        .buttons {
-            visibility: visible;
-        }
-    }
+//
+// panel
+//
+.outer-panel {
+    width: 50%;
+    float: left;
+    min-height: 400px;
 
 }
 
-.success {
-    .sign {
-        color: @success;
-    }
-    .caption {
-        color: @success;
+.panel {
+    margin: 0 30px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.panel > section {
+    padding: 60px;
+}
+
+#haskell {
+    background: @haskellLight;
+
+    header {
+        background: @haskellDark;
     }
 }
 
-.fail {
-    .sign {
-        color: @fail;
-    }
-    .caption {
-        color: @fail;
+#node {
+    background: @nodeLight;
+
+    header {
+        background: @nodeDark;
     }
 }
 
-.detail {
-    padding-left: 20px;
-    color: #aaa;
+header {
+    text-align: center;
+    padding: 5px;
+    color: white;
 }
