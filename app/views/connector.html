@@ -1,9 +1,18 @@
 <div class="outer-panel">
     <div id="{{connector.name | lowercase}}" class="panel">
         <header>
-            <h2>{{connector.name}}</h2>
+            <div class="panel-header-button-left">
+                <button><i class="fa fa-power-off"></i></button>
+            </div>
+            <div class="panel-header-h1">
+                <h2>{{connector.name}}</h2>
+            </div>
+            <div class="panel-header-button-right">
+                <button><i class="fa fa-play-circle"></i></button>
+            </div>
         </header>
         <section>
+            <button ng-click="connector.connect()"></button>
             345
         </section>
     </div>

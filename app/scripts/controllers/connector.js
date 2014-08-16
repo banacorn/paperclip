@@ -8,9 +8,27 @@
  * Controller of the paperclipApp
  */
 angular.module('paperclipApp')
-    .controller('ConnectorCtrl', function($scope) {
+// .factory('socketio', function($scope, connectorSettings, socketFactory) {
 
-        var config = $scope.connectors[$scope.$index];
+//     var port = connectorSettings[$scope.$index].port;
+//     console.log('connecting with ' + port);
 
-        this.name = config.name;
-    });
+//     return socketFactory({
+//         ioSocket: window.io.connect('http://localhost:' + port)
+//     });
+// })
+.controller('ConnectorCtrl', function($scope, connectorSettings, socketFactory) {
+
+    console.log(socketFactory);
+    // specialize controller with configurations
+    var config = connectorSettings[$scope.$index];
+
+
+    this.connect = function() {
+        return socketFactory({
+            ioSocket: window.io.connect('http://localhost:' + config.port)
+        });
+    };
+
+    this.name = config.name;
+});
