@@ -21,7 +21,7 @@
         <![endif]-->
         <!-- Add your site or application content here -->
         <h1>Client-side test for socketio </h1>
-        <connector ng-repeat="connector in [0, 1]"></connector>
+        <test ng-repeat="_ in [0, 1]"></test>
     </div>
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
@@ -41,8 +41,8 @@
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/connector.js"></script>
-    <script src="scripts/directives/connector.js"></script>
+    <script src="scripts/controllers/test.js"></script>
+    <script src="scripts/directives/test.js"></script>
     <!-- endbuild -->
 </body>
 </html>

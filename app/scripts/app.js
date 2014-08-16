@@ -31,7 +31,7 @@
 
 angular
     .module('paperclipApp', ['btford.socket-io'])
-    .value('connectorSettings', [{
+    .value('testSettings', [{
         name: 'Haskell',
         port: 4000
     }, {
