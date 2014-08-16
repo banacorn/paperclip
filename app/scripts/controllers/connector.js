@@ -24,7 +24,9 @@ angular.module('paperclipApp')
     var config = connectorSettings[$scope.$index];
 
 
+    this.connected = false;
     this.connect = function() {
+        this.connected = true;
         return socketFactory({
             ioSocket: window.io.connect('http://localhost:' + config.port)
         });

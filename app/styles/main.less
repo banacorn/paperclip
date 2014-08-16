@@ -54,42 +54,52 @@ button {
 }
 
 .panel > section {
-    padding: 60px;
+    padding: 30px;
 }
 
-header h2 {
-    height: 60px;
-    line-height: 60px;
+
+
+// 
+// panel header
+//
+
+header {
+
+
+    text-align: center;
+    padding: 5px;
+    color: white;
+
+
+    & > * {
+        height: 60px;
+        line-height: 60px;
+    }
+
+    .run-button {
+        margin-top: -60px;
+        font-size: 150%;
+        width: 60px;
+        float: right;
+
+        &:hover {
+            color: gold;
+        }
+    }
+
+    .panel-header-h1 {
+        width: 200px;
+        margin: 0 auto;
+    }
 }
 
-.panel-header-button-left {
 
-    height: 60px;
-    line-height: 60px;
-    font-size: 150%;
-    width: 60px;
-    float: left;
-}
 
-.panel-header-button-right {
 
-    height: 60px;
-    line-height: 60px;
-    margin-top: -60px;
-    font-size: 150%;
-    width: 60px;
-    float: right;
-}
 
-.panel-header-h1 {
-    width: 200px;
-    margin: 0 auto;
-}
-
-// .panel-header-button {
-//     float: left;
-// }
-
+// 
+// panel content
+//
 
 #haskell {
     background: @haskellLight;
@@ -107,8 +117,48 @@ header h2 {
     }
 }
 
-header {
-    text-align: center;
-    padding: 5px;
-    color: white;
+
+// 
+// test-case
+//
+
+ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
+
+.test-case {
+    height: 60px;
+    line-height: 60px;
+    font-size: 150%;
+    color: white;
+    border-radius: 5px;
+    margin: 0 10px;
+
+    &:hover {
+        background: fade(white, 10%);
+        cursor: pointer;
+    }
+}
+
+.test-case-sign {
+    text-align: center;
+    float: right;
+    width: 60px;
+}
+
+.test-case-content {
+    float: left;
+
+    .caption {
+        padding: 0 20px;
+    }
+
+    .detail {
+        color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+
+
