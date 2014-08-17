@@ -15,7 +15,8 @@
                 name="Connect"
                 description="connect with the server"
                 connector
-                ng-click="test.connect()"
+                ng-click="test.inactive && test.connect()"
+                inactive="{{test.connectStatus === 'connected'}}"
                 case-status="{{test.connectStatus}}"
                 ></case>
 
@@ -23,7 +24,7 @@
                 name="Receive" 
                 description="greetings from the server"
                 passive
-                inactive={{test.inactive}}
+                inactive="{{test.inactive}}"
                 case-status="{{test.receiveStatus}}"
                 ></case>
 
@@ -31,7 +32,7 @@
                 name="Send" 
                 description="blessings to the server"
                 ng-click="!test.inactive && test.send()"
-                inactive={{test.inactive}}
+                inactive="{{test.inactive}}"
                 case-status="{{test.sendStatus}}"
 
                 ></case>
@@ -40,7 +41,7 @@
                 name="Ping Pong" 
                 description="back and forth"
                 ng-click="!test.inactive && test.pingPong()"
-                inactive={{test.inactive}}
+                inactive="{{test.inactive}}"
                 case-status="{{test.pingPongStatus}}"
                 ></case>
                 <!-- <li class="test-case" ng-click="test.connect()">
