@@ -8,9 +8,6 @@
  * Controller of the paperclipApp
  */
 angular.module('paperclipApp')
-    .controller('CaseCtrl', function($scope) {
-        this.status = 'inactivated';
-        this.click = function() {
-            $scope.case.func();
-        };
+    .controller('CaseCtrl', function($scope, $attrs) {
+        $scope.connector = $attrs.connector !== undefined;
     });

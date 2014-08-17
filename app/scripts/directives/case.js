@@ -12,6 +12,10 @@ angular.module('paperclipApp')
             templateUrl: 'views/case.html',
             restrict: 'E',
             controller: 'CaseCtrl',
-            controllerAs: 'caseCtrl'
+            controllerAs: 'caseCtrl',
+            scope: {
+                name: '@',
+                description: '@'
+            }
         };
     });

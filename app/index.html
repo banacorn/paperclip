@@ -15,13 +15,10 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
     </head>
-    <body ng-app="paperclipApp">
-        <!--[if lt IE 7]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <body ng-app="paperclipApp" ng-controller="PaperclipCtrl">
         <!-- Add your site or application content here -->
         <h1>Client-side test for socketio </h1>
-        <test ng-repeat="_ in [0, 1]"></test>
+        <test ng-repeat="config in testConfigs"></test>
     </div>
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
@@ -45,6 +42,7 @@
     <script src="scripts/directives/test.js"></script>
     <script src="scripts/controllers/case.js"></script>
     <script src="scripts/directives/case.js"></script>
+    <script src="scripts/controllers/paperclip.js"></script>
     <!-- endbuild -->
 </body>
 </html>
