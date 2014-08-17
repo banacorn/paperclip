@@ -10,14 +10,33 @@
         </header>
         <section>
             <ol>
+
                 <case
                 name="Connect"
                 description="connect with the server"
                 connector
+                ng-click="test.connect()"
+                case-status="{{test.connected}}"
                 ></case>
-                <case name="Receive" description="greetings from the server"></case>
-                <case name="Send" description="blessings to the server" ></case>
-                <case name="Ping Pong" description="back and forth" ></case>
+
+                <case 
+                name="Receive" 
+                description="greetings from the server"
+                passive
+                case-status="{{test.receiveStatus}}"
+                ></case>
+
+                <case 
+                name="Send" 
+                description="blessings to the server"
+                ng-click="test.click('Send')"
+                ></case>
+
+                <case 
+                name="Ping Pong" 
+                description="back and forth"
+                ng-click="test.click('Ping Pong')"
+                ></case>
                 <!-- <li class="test-case" ng-click="test.connect()">
                     <div class="test-case-content">
                         <span class="caption">Receive</span>

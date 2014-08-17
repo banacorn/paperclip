@@ -4,9 +4,10 @@
         <span class="detail">{{description}}</span>
     </div>
     <div ng-show="{{connector}}" class="test-case-icon">
-        yes
+        <i class="fa fa-power-off {{status}}"></i>
     </div>
     <div ng-hide="{{connector}}" class="test-case-icon">
-        no
+        <i class="fa fa-check-circle" ng-show="status === 'passed'"></i>
+        <i class="fa fa-exclamation-circle" ng-show="status === 'failed'"></i>
     </div>
 </li>

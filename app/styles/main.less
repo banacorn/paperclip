@@ -129,7 +129,8 @@ ol {
     list-style: none;
 }
 
-.test-case {
+case {
+    display: block;
     height: 60px;
     line-height: 60px;
     font-size: 150%;
@@ -140,6 +141,11 @@ ol {
     &:hover {
         background: fade(white, 10%);
         cursor: pointer;
+    }
+
+    &[passive] {
+        background: inherit;
+        cursor: inherit;
     }
 }
 
@@ -164,5 +170,12 @@ ol {
 
 
 .disconnected {
-    color: #da;
+    color: #f84;
+}
+
+.connecting {
+    color: #fe8;
+}
+.connected {
+    color: #4f8;
 }
