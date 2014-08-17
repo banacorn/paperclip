@@ -1,0 +1,13 @@
+<li class="test-case" ng-click="caseCtrl.click()">
+    <div class="test-case-content">
+        <span class="caption">{{case.name}}</span>
+        <span class="detail">{{case.description}}</span>
+    </div>
+    <div ng-show="case.connector" class="test-case-icon">
+    
+        connector
+    </div>
+    <div ng-hide="case.connector" class="test-case-icon">
+        not connector
+    </div>
+</li>
