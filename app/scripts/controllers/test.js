@@ -27,10 +27,9 @@ angular.module('paperclipApp')
 
         this.run = function() {
             that.connect();
-            $scope.$on('socket:connect', function () {
-
-            that.send();
-            that.pingPong();
+            $scope.$on('socket:' + that.name + ':connect', function() {
+                that.send();
+                that.pingPong();
             });
         };
 
@@ -40,13 +39,13 @@ angular.module('paperclipApp')
             socket = socketFactory({
                 ioSocket: window.io.connect('http://localhost:' + $scope.config.port)
             });
-            socket.forward('connect');
 
             // case:connect success
             socket.on('connect', function() {
                 that.connectStatus = 'connected';
                 // erase inactive attribute
                 that.inactive = false;
+                $scope.$emit('socket:' + that.name + ':connect');
             });
 
             // case:connect error
