@@ -25,16 +25,26 @@ angular.module('paperclipApp')
         that.sendStatus = 'inactive';
         that.pingPongStatus = 'inactive';
 
+        this.run = function() {
+            that.connect();
+            $scope.$on('socket:connect', function () {
+
+            that.send();
+            that.pingPong();
+            });
+        };
+
         this.connect = function() {
+
             that.connectStatus = 'connecting';
             socket = socketFactory({
                 ioSocket: window.io.connect('http://localhost:' + $scope.config.port)
             });
+            socket.forward('connect');
 
             // case:connect success
             socket.on('connect', function() {
                 that.connectStatus = 'connected';
-
                 // erase inactive attribute
                 that.inactive = false;
             });
