@@ -71,10 +71,12 @@ angular.module('paperclipApp')
             // case:ping pong
             socket.on('case:ping pong', function() {
                 that.pingPongStatus = 'passed';
+
             });
         };
 
         this.send = function() {
+            that.sendStatus = 'inactive';
             if (socket !== null) {
                 socket.emit('case:send');
                 that.sendStatus = 'passed';
@@ -82,37 +84,9 @@ angular.module('paperclipApp')
         };
 
         this.pingPong = function() {
+            that.pingPongStatus = 'inactive';
             if (socket !== null) {
                 socket.emit('case:ping pong');
             }
         };
-
-
-        // this.click = function(caseName) {
-
-
-
-
-        //     // that.connected = 'connecting';
-
-        //     // var socket = socketFactory({
-        //     //     ioSocket: window.io.connect('http://localhost:' + $scope.config.port)
-        //     // });
-
-        //     console.log(caseName);
-
-        //     // socket.on('connect', function() {
-        //     //     console.log('connection success');
-        //     //     $()
-        //     //     that.connected = 'connected';
-        //     // });
-
-        //     // socket.on('connect_error', function() {
-        //     //     that.connected = 'disconnected';
-        //     // });
-
-        // };
-
-
-
     });
