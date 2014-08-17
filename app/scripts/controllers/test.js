@@ -25,12 +25,22 @@ angular.module('paperclipApp')
         that.sendStatus = 'inactive';
         that.pingPongStatus = 'inactive';
 
-        this.run = function() {
-            that.connect();
-            $scope.$on('socket:' + that.name + ':connect', function() {
+        var ran = false;
+
+        $scope.$on('socket:' + that.name + ':connect', function() {
+            if (ran) {
                 that.send();
                 that.pingPong();
-            });
+            }
+        });
+
+
+
+        this.run = function() {
+            if (!ran) {
+                that.connect();
+            }
+            ran = true;
         };
 
         this.connect = function() {
