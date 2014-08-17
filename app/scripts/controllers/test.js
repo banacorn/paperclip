@@ -34,7 +34,11 @@ angular.module('paperclipApp')
             }
         });
 
-
+        $scope.$on('socket:' + that.name + ':connect_error', function() {
+            if (ran) {
+                ran = false;
+            }
+        });
 
         this.run = function() {
             if (!ran) {
@@ -61,6 +65,7 @@ angular.module('paperclipApp')
             // case:connect error
             socket.on('connect_error', function() {
                 that.connectStatus = 'disconnected';
+                $scope.$emit('socket:' + that.name + ':connect_error');
             });
 
             // case:receive
