@@ -16,26 +16,32 @@
                 description="connect with the server"
                 connector
                 ng-click="test.connect()"
-                case-status="{{test.connected}}"
+                case-status="{{test.connectStatus}}"
                 ></case>
 
                 <case 
                 name="Receive" 
                 description="greetings from the server"
                 passive
+                inactive={{test.inactive}}
                 case-status="{{test.receiveStatus}}"
                 ></case>
 
                 <case 
                 name="Send" 
                 description="blessings to the server"
-                ng-click="test.click('Send')"
+                ng-click="!test.inactive && test.send()"
+                inactive={{test.inactive}}
+                case-status="{{test.sendStatus}}"
+
                 ></case>
 
                 <case 
                 name="Ping Pong" 
                 description="back and forth"
-                ng-click="test.click('Ping Pong')"
+                ng-click="!test.inactive && test.pingPong()"
+                inactive={{test.inactive}}
+                case-status="{{test.pingPongStatus}}"
                 ></case>
                 <!-- <li class="test-case" ng-click="test.connect()">
                     <div class="test-case-content">

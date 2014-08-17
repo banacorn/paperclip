@@ -10,5 +10,21 @@ httpServer.start({
 });
 
 io.on('connection', function(socket) {
-    socket.emit('case:receive');
+
+    // receive
+    socket.emit('case:receive', function() {
+        console.log('case:receive');
+    });
+
+    // send
+    socket.on('case:send', function() {
+        console.log('case:send');
+    });
+
+    // ping pong
+    socket.on('case:ping pong', function() {
+        socket.emit('case:ping pong', function() {
+            console.log('case:ping pong');
+        });
+    });
 });
